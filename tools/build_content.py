@@ -405,8 +405,20 @@ def main():
         with open(os.path.join(out, "ch-%s.json" % c["id"]), "w", encoding="utf-8") as f:
             json.dump(c, f, ensure_ascii=False, separators=(",", ":"))
 
-    practice_path = os.path.join(src, "24-practice-bank.md")
-    mcq = parse_practice(practice_path) if os.path.exists(practice_path) else []
+    # Practice MCQs come from the balanced bank in tools/mcq/ (see build_mcq.py).
+    # The curriculum's 24-practice-bank.md is only a fallback.
+    bank_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcq")
+    if os.path.isdir(bank_dir):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import build_mcq
+        bank = build_mcq.load_bank()
+        problems = build_mcq.check(bank)
+        if problems:
+            sys.exit("MCQ bank failed length checks:\n" + "\n".join(problems))
+        mcq = build_mcq.build(bank)
+    else:
+        practice_path = os.path.join(src, "24-practice-bank.md")
+        mcq = parse_practice(practice_path) if os.path.exists(practice_path) else []
     with open(os.path.join(out, "questions.json"), "w", encoding="utf-8") as f:
         json.dump({"mcq": mcq}, f, ensure_ascii=False, separators=(",", ":"))
 

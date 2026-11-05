@@ -7,10 +7,10 @@ Built with Kotlin and Jetpack Compose. Everything is bundled in the APK: **25 ch
 
 ## Install
 
-Download `system-design-1.0.0.apk` from [Releases](../../releases/latest) and sideload it:
+Download `system-design-1.1.0.apk` from [Releases](../../releases/latest) and sideload it:
 
 ```bash
-adb install system-design-1.0.0.apk
+adb install system-design-1.1.0.apk
 ```
 
 Or open the APK on the device and allow installation from your browser/file manager.
@@ -75,6 +75,14 @@ python3 tools/build_content.py \
 ```
 
 Block types: `paragraph`, `heading`, `list`, `table`, `code`, `quote`, `divider`.
+
+The practice MCQs are authored in `tools/mcq/bank_*.py`, with the correct option kept apart from
+three distractors. `tools/build_mcq.py` (also called by `build_content.py`) spreads correct answers
+evenly across A–D and fails the build if the correct option stands out by length:
+
+```bash
+python3 tools/build_mcq.py --report
+```
 
 ## Architecture
 
