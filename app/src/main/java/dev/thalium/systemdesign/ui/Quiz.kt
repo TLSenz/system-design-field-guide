@@ -27,8 +27,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.thalium.systemdesign.data.Mcq
+import dev.thalium.systemdesign.data.mcqPrompt
 
 @Composable
 fun QuestionCard(
@@ -52,12 +55,16 @@ fun QuestionCard(
                 style = MaterialTheme.typography.labelSmall,
                 color = cs.primary
             )
-            Spacer(Modifier.weight(1f))
             Text(
                 text = mcq.topic,
                 style = MaterialTheme.typography.labelSmall,
-                color = cs.onSurfaceVariant
+                color = cs.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.End,
+                modifier = Modifier.weight(1f)
             )
+            CopyQuestionButton(text = mcqPrompt(mcq, selected, submitted))
         }
 
         Spacer(Modifier.height(12.dp))

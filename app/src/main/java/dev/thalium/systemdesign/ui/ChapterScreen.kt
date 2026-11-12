@@ -42,6 +42,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.thalium.systemdesign.MainViewModel
 import dev.thalium.systemdesign.data.Chapter
 import dev.thalium.systemdesign.data.SelfCheck
+import dev.thalium.systemdesign.data.selfCheckPrompt
 
 @Composable
 fun ChapterScreen(vm: MainViewModel, id: String, focusSection: String?) {
@@ -215,10 +216,16 @@ private fun SelfCheckSection(items: List<SelfCheck>) {
                     .border(1.dp, cs.outlineVariant, RoundedCornerShape(14.dp))
                     .padding(14.dp)
             ) {
-                Md(
-                    text = item.q,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium)
-                )
+                Row(verticalAlignment = Alignment.Top) {
+                    Md(
+                        text = item.q,
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
+                        modifier = Modifier.weight(1f)
+                    )
+                    CopyQuestionButton(
+                        text = selfCheckPrompt(item, revealed = index in open)
+                    )
+                }
                 TextButton(onClick = {
                     open = if (index in open) open - index else open + index
                 }) {

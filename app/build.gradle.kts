@@ -12,8 +12,8 @@ android {
         applicationId = "dev.thalium.systemdesign"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
     }
 
     buildTypes {
@@ -57,4 +57,5 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.9.4")
     implementation("androidx.compose.material3:material3:1.4.0")
     implementation("androidx.compose.material:material-icons-core:1.7.8")
+    testImplementation("junit:junit:4.13.2")
 }

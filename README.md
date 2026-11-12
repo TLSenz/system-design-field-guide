@@ -7,10 +7,10 @@ Built with Kotlin and Jetpack Compose. Everything is bundled in the APK: **25 ch
 
 ## Install
 
-Download `system-design-1.1.0.apk` from [Releases](../../releases/latest) and sideload it:
+Download `system-design-1.2.0.apk` from [Releases](../../releases/latest) and sideload it:
 
 ```bash
-adb install system-design-1.1.0.apk
+adb install system-design-1.2.0.apk
 ```
 
 Or open the APK on the device and allow installation from your browser/file manager.
@@ -26,6 +26,7 @@ personal sideloading — not a Play Store build.
 | **309 sections** with tables, code blocks, callouts and quotes rendered natively |
 | **283 self-check questions** with reveal-on-tap answers |
 | **80 exam-style MCQs** across 16 topics, with explanations |
+| **Copy for AI** — copy any practice or self-check question as a ready-made prompt |
 | **Spaced repetition** — missed questions return on a 1, 3, 6, 12… day schedule |
 | **Progress** — chapter completion, streak, per-topic accuracy, bookmarks |
 | **Search** across every chapter and section |
